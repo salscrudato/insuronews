@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    match /news/{id} {
+      allow read: if true;      // public read
+      allow write: if false;     // no client writes (Functions use Admin SDK)
+    }
+  }
+}
